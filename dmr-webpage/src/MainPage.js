@@ -14,7 +14,7 @@ export default function MainPage() {
           <div>M</div>
           <div>R</div>
         </div>
-        <Link to="/login" className="login-button">Login</Link>
+        <Link to="/login" className="login-button">Login/Register</Link>
       </div>
 
       <div className="line-container">

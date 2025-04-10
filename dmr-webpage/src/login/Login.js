@@ -15,6 +15,9 @@ export default function LoginPage() {
 
       {/* Back to Main button */}
       <Link to="/" className="back-to-main-button">Back to Main</Link>
+
+      {/* Register button */}
+      <Link to="/register" className="register-button">Register</Link>
     </div>
   );
 }
