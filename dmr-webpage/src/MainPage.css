@@ -1,0 +1,111 @@
+.background {
+  background-color: #080707;
+  min-height: 100vh;
+}
+
+.dmr-text {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  color: #020bbf;
+  font-weight: 700;
+  font-family: Bree-Serif;
+  padding: 0 2rem;
+}
+
+.login-button {
+  background-color: #020bbf;
+  color: #080707;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-family: Bree-Serif;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.login-button:hover {
+  background-color: #01089a;
+}
+
+.sub-header {
+  align-items: center;
+  justify-content: center;
+  color: #020bbf;
+  margin: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  z-index: 1;
+  font-style: italic;
+}
+
+.line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #020bbf;
+  position: relative;
+  top: 0.2em;
+}
+
+/* Tab bar */
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .5rem;
+  width: 100%;
+}
+
+.tab-button {
+  min-height: 2.5rem;
+  background-color: transparent;
+  border: 2px solid #020bbf;
+  color: #020bbf;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  font-family: Bree-Serif;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.tab-button:hover {
+  background-color: #020bbf;
+  color: #080707;
+}
+
+.tab-button:disabled {
+  cursor: default;
+  background-color: #080707;
+}
+
+.active-tab {
+  background-color: #020bbf;
+  color: #080707;
+}
+
+.tab-content {
+  color: #020bbf;
+  margin-top: 2rem;
+  text-align: center;
+  min-height: 1.1rem;
+}
+
+.tab-text {
+  font-size: 1.1rem;
+  font-family: Bree-Serif;
+}
