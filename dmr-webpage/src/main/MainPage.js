@@ -6,6 +6,7 @@ export default function MainPage() {
   const [tab, setTab] = useState("Home");
   const tabs = ["Home", "Manga", "", ""];
 
+
   return (
     <div className='background'>
       <div className="header">

@@ -1,0 +1,8 @@
+Copyright (c) 2025 Gianna Borgo
+
+All rights reserved.
+
+This source code and project are the property of Gianna Borgo.
+If you wish to use, share, or modify this code, please contact Gianna Borgo for licensing terms.
+
+If you want, I can generate a custom LICENSE.txt, README.md snippet, and example file header. Just let me know!

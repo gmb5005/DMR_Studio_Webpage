@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './RegistrationPage.css';
+import { handleSubmit } from './utils';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -10,37 +11,19 @@ export default function RegisterPage() {
     email: '',
     password: '',
   });
+  const [message, setMessage] = useState(''); // <-- Add this line
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5000/api/users/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message); // Success message
-      } else {
-        alert(data.message); // Error message
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    }
-  };
+  // Pass setMessage!
+  const handleRegisterSubmit = (e) => handleSubmit(e, formData, setMessage, 'register');
 
   return (
     <div className="Register-container">
       <h2>Sign Up For New Account</h2>
-      <form className="Register-form" onSubmit={handleSubmit}>
+      <form className="Register-form" onSubmit={handleRegisterSubmit}>
         <input
           type="text"
           name="firstname"

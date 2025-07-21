@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import { handleSubmit } from './utils';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -11,32 +12,12 @@ export default function LoginPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message); // Success message
-      } else {
-        setMessage(data.message); // Error message
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred. Please try again.');
-    }
-  };
+  const handleLoginSubmit = (e) => handleSubmit(e, formData, setMessage);
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleLoginSubmit}>
         <input
           type="text"
           name="username"
