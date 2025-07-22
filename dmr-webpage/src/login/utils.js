@@ -1,19 +1,21 @@
 import './utils.css';
 
-export async function handleSubmit(e, formData, setMessage, endpoint = 'login') {
+export async function handleSubmit(e, formData, setMessage, endpoint = 'login', setUser, navigate) {
     e.preventDefault();
     try {
-        setTimeout(() => setMessage('bye'), 10000); 
         const response = await fetch(`http://localhost:5000/api/users/${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         });
-        console.log('Response:', response);
-        console.log('Endpoint:', endpoint);
-        setTimeout(() => setMessage('hi'), 10000); // Clear message after 2 seconds
+
         const data = await response.json();
         if (response.ok) {
+            if (setUser && data.user){
+                setUser(data.user); // Update AuthContext
+                console.log('User data sent');
+            }
+            
             // Create overlay
             const overlay = document.createElement('div');
             overlay.className = 'popup-utils-overlay';
@@ -28,21 +30,20 @@ export async function handleSubmit(e, formData, setMessage, endpoint = 'login') 
             closeBtn.innerText = 'OK';
             closeBtn.onclick = () => {
                 document.body.removeChild(overlay);
-                window.location.href = '/';
+                if (navigate) {
+                    navigate('/');
+                }
             };
+            
             popup.appendChild(document.createElement('br'));
             popup.appendChild(closeBtn);
 
             overlay.appendChild(popup);
             document.body.appendChild(overlay);
         } else {
-            console.log('Login/Register failed:', data.message);
             setMessage(data.message);
-            setTimeout(() => setMessage('else'), 10000); 
         }
     } catch (error) {
-        console.error('Error during fetch or processing:', error);
         setMessage('An error occurred. Please try again.');
-        setTimeout(() => setMessage('error'), 10000); 
     }
 }

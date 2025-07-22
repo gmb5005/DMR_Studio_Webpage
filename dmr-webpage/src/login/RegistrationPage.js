@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './RegistrationPage.css';
 import { handleSubmit } from './utils';
 
@@ -11,14 +11,14 @@ export default function RegisterPage() {
     email: '',
     password: '',
   });
-  const [message, setMessage] = useState(''); // <-- Add this line
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Pass setMessage!
-  const handleRegisterSubmit = (e) => handleSubmit(e, formData, setMessage, 'register');
+  const handleRegisterSubmit = (e) => handleSubmit(e, formData, setMessage, 'register', undefined, navigate);
 
   return (
     <div className="Register-container">

@@ -1,18 +1,20 @@
-// Login.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { handleSubmit } from './utils';
+import { useAuth } from '../AuthContext';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [message, setMessage] = useState('');
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleLoginSubmit = (e) => handleSubmit(e, formData, setMessage);
+  const handleLoginSubmit = (e) => handleSubmit(e, formData, setMessage, 'login', setUser, navigate);
 
   return (
     <div className="login-container">
