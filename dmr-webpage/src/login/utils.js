@@ -13,6 +13,8 @@ export async function handleSubmit(e, formData, setMessage, endpoint = 'login', 
         if (response.ok) {
             if (setUser && data.user){
                 setUser(data.user); // Update AuthContext
+                // Store user in sessionStorage to persist until tab is closed
+                sessionStorage.setItem('user', JSON.stringify(data.user));
                 console.log('User data sent');
             }
             

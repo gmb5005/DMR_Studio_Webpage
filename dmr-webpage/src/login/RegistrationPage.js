@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './RegistrationPage.css';
 import { handleSubmit } from './utils';
+import DMRHeader from '../main/DMRHeader';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -21,57 +22,60 @@ export default function RegisterPage() {
   const handleRegisterSubmit = (e) => handleSubmit(e, formData, setMessage, 'register', undefined, navigate);
 
   return (
-    <div className="Register-container">
-      <h2>Sign Up For New Account</h2>
-      <form className="Register-form" onSubmit={handleRegisterSubmit}>
-        <input
-          type="text"
-          name="firstname"
-          placeholder="First Name"
-          value={formData.firstname}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Last Name"
-          value={formData.lastname}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div>
+      <DMRHeader />
+      <div className="Register-container">
+        <h2>Sign Up For New Account</h2>
+        <form className="Register-form" onSubmit={handleRegisterSubmit}>
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First Name"
+            value={formData.firstname}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Last Name"
+            value={formData.lastname}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Sign Up</button>
+        </form>
 
-      {/* Back to Main button */}
-      <Link to="/" className="back-to-main-button">Back to Main</Link>
+        {/* Back to Main button */}
+        <Link to="/" className="back-to-main-button">Back to Main</Link>
 
-      {/* Back to Login button */}
-      <Link to="/login" className="back-to-login-button">Back to Login</Link>
+        {/* Back to Login button */}
+        <Link to="/login" className="back-to-login-button">Back to Login</Link>
+      </div>
     </div>
   );
 }

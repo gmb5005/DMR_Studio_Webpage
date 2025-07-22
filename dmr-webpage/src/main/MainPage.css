@@ -7,28 +7,38 @@
   display: flex;
   gap: 1.5rem;
   margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
 }
 
 .header {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center children horizontally */
   font-size: 3rem;
   color: #020bbf;
   font-weight: 700;
   font-family: Bree-Serif;
-  padding: 0 2rem;
+  padding: 1.75rem 2rem; /* Add vertical padding */
+  position: relative; /* For absolute positioning of menu/login */
 }
 
 .login-button {
   background-color: #020bbf;
   color: #080707;
   border: none;
-  padding: 0.5rem 1.2rem;
+  padding: .5rem 1.2rem;
   font-size: 1rem;
   font-family: Bree-Serif;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  position: absolute;
+  right: 2rem;
+  top: 65%;
+  transform: translateY(-50%);
 }
 .login-button:hover {
   background-color: #01089a;
@@ -121,10 +131,13 @@
   align-items: center;
   cursor: pointer;
   margin-left: auto;
-  position: relative;
+  position: absolute;
+  right: 2rem;
+  top: 30%;
+  transform: none;
   box-shadow: 0 2px 8px rgba(2, 11, 191, 0.15);
-  transition: background 0.2s;
 }
+
 .menu-square:focus,
 .menu-square:hover {
   background: #01089a;
@@ -132,16 +145,15 @@
 
 .menu-line {
   width: 1.5rem;
-  height: 0.22rem;
+  height: 0.2rem;
   background: #fff;
-  margin: 0.18rem 0;
-  border-radius: 2px;
-  transition: background 0.2s;
+  margin: 0.15rem 0;
+  border-radius: 10px;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 2.8rem;
+  top: 1.5rem;
   right: 0;
   background: #fff;
   border: 1px solid #020bbf;

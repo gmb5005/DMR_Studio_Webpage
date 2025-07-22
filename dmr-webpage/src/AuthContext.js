@@ -1,10 +1,14 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // null means not logged in
-  
+  // Initialize user from sessionStorage if available
+  const [user, setUser] = useState(() => {
+    const storedUser = sessionStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}
